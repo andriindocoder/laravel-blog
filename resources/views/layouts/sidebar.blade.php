@@ -1,3 +1,9 @@
+<style>
+  a, a:hover {
+    color: black;
+    text-decoration: none;
+  }
+</style>
 <!-- Sidebar Widgets Column -->
     <div class="col-md-4">
 
@@ -61,9 +67,9 @@
         <h5 class="card-header">Categories</h5>
         <div>
           <ul class="list-group list-group-flush">
-            <li class="list-group-item">Category One <span class="badge badge-pill badge-secondary float-right">4</span></li>
-            <li class="list-group-item">Category Two <span class="badge badge-pill badge-secondary float-right">7</span></li>
-            <li class="list-group-item">Category Three <span class="badge badge-pill badge-secondary float-right">12</span></li>
+            @foreach($categories as $category)
+            <li class="list-group-item"><a href="{{ route('category', $category->id)}}">{{ $category->title }} <span class="badge badge-pill badge-secondary float-right">{{ $category->posts->count() }}</span></a></li>
+            @endforeach
           </ul>
         </div>
       </div>
