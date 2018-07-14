@@ -26,8 +26,8 @@
           <a href="#" class="btn btn-primary">Read More &rarr;</a>
         </div>
         <div class="card-footer text-muted">
-          Posted on January 1, 2017 by
-          <a href="#">Start Bootstrap</a>
+          Posted on {{ $post->date }} by
+          {{ $post->author->name }}
         </div>
       </div>
 
@@ -36,12 +36,7 @@
 
       <!-- Pagination -->
       <ul class="pagination justify-content-center mb-4">
-        <li class="page-item">
-          <a class="page-link" href="#">&larr; Older</a>
-        </li>
-        <li class="page-item disabled">
-          <a class="page-link" href="#">Newer &rarr;</a>
-        </li>
+        {{ $posts->links() }}
       </ul>
 
     </div>
