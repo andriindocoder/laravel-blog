@@ -21,9 +21,9 @@
         <img class="card-img-top" src="{{ $post->image_url }}" alt="{{ $post->slug }}">
         @endif
         <div class="card-body">
-          <h2 class="card-title"><a href="{{ route('blog.show', $post->id) }}">{{ $post->title }}</a></h2>
+          <h2 class="card-title"><a href="{{ route('blog.show', $post->slug) }}">{{ $post->title }}</a></h2>
           <p class="card-text">{{ $post->excerpt }}</p>
-          <a href="{{ route('blog.show', $post->id) }}" class="btn btn-primary">Read More &rarr;</a>
+          <a href="{{ route('blog.show', $post->slug) }}" class="btn btn-primary">Read More &rarr;</a>
         </div>
         <div class="card-footer text-muted">
           Posted on {{ $post->date }} by

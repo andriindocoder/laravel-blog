@@ -2,8 +2,10 @@
 
 namespace App\Providers;
 
+
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
+use App\Post;
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -23,9 +25,11 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
 
         parent::boot();
+        route::bind('post', function($slug){
+            return Post::published()->where('slug', $slug)->first();
+        });
     }
 
     /**
