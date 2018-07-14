@@ -30,7 +30,7 @@
       @endif
 
       <!-- Post Content -->
-      <p class="lead">{{ $post->body }}</p>
+      <p class="lead">{!! $post->body_html !!}</p>
 
       <hr>
 

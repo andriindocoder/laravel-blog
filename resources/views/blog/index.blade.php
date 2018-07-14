@@ -22,7 +22,7 @@
         @endif
         <div class="card-body">
           <h2 class="card-title"><a href="{{ route('blog.show', $post->slug) }}">{{ $post->title }}</a></h2>
-          <p class="card-text">{{ $post->excerpt }}</p>
+          <p class="card-text">{!! $post->excerpt_html !!}</p>
           <a href="{{ route('blog.show', $post->slug) }}" class="btn btn-primary">Read More &rarr;</a>
         </div>
         <div class="card-footer text-muted">
