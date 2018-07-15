@@ -1,7 +1,11 @@
 <style>
-  a, a:hover {
+  a {
     color: black;
+  }
+
+  a:hover {
     text-decoration: none;
+    font-size: 105%;
   }
 </style>
 <!-- Sidebar Widgets Column -->
@@ -68,7 +72,7 @@
         <div>
           <ul class="list-group list-group-flush">
             @foreach($categories as $category)
-            <li class="list-group-item"><a href="{{ route('category', $category->id)}}">{{ $category->title }} <span class="badge badge-pill badge-secondary float-right">{{ $category->posts->count() }}</span></a></li>
+            <li class="list-group-item"><a href="{{ route('category', $category->slug)}}">{{ $category->title }} <span class="badge badge-pill badge-secondary float-right">{{ $category->posts->count() }}</span></a></li>
             @endforeach
           </ul>
         </div>
