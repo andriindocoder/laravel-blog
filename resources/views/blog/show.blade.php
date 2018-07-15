@@ -20,7 +20,7 @@
       <hr>
 
       <!-- Date/Time -->
-      <p>Posted {{ $post->date }}</p>
+      <p>Posted {{ $post->date }} on <strong><a href="{{ route('category',$post->category->slug)}}">{{ $post->category->title}}</a></strong></p>
 
       <hr>
       @if($post->image_url)
@@ -37,8 +37,8 @@
       <article class="post-author padding-10">
       <div class="media">
         <div class="media-center">
-          <a href="#">
-            <img src="/img/author.jpg" alt="Author 1" class="media-object">
+          <a href="{{ route('author', $post->author->slug )}}">
+            <img src="{{ $post->author->gravatar() }}" width="100" height="100" alt="{{ $post->author->name }}" class="media-object">
           </a>
         </div>
         <div class="media-body" style="padding-left: 10px;">
@@ -46,11 +46,11 @@
           <div class="post-author-count">
             <a href="{{ $post->author->slug }}">
               <i class="fa fa-clone"></i>
-              <?php $postCount = $post->author->posts->count();?>
+              <?php $postCount = $post->author->posts()->published()->count();?>
               {{ $postCount }} {{ str_plural('post', $postCount) }}
             </a>
           </div>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam quas incidunt eligendi. Repellendus.</p>
+          {!! $post->author->bio_html !!}
         </div>
       </div>
       </article>
