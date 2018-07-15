@@ -19,16 +19,19 @@ class UsersTableSeeder extends Seeder
         DB::table('users')->insert([
         	[
         		'name' => "Super Administrator",
+                'slug' => "super-administrator",
         		'email' => "superadmin@laravelblog.com",
         		'password' => bcrypt('secret')
         	],
         	[
         		'name' => "Administrator",
+                'slug' => "administrator",
         		'email' => "admin@laravelblog.com",
         		'password' => bcrypt('secret')
         	],
         	[
         		'name' => "Member",
+                'slug' => "member",
         		'email' => "member@laravelblog.com",
         		'password' => bcrypt('secret')
         	],

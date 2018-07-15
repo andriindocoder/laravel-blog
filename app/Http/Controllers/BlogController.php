@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Post;
 use App\Category;
+use App\User;
 use Carbon\Carbon;
 
 class BlogController extends Controller
@@ -39,6 +40,20 @@ class BlogController extends Controller
                 
         return view("blog.index", compact('posts','categoryName'));
     }
+
+    public function author(User $author){ //$author from routes {author}
+        $authorName = $author->name;
+
+        $posts = $author->posts()
+                    ->with('category')
+                    ->latestFirst()
+                    ->published()
+                    ->paginate($this->limit);
+                    
+                
+        return view("blog.index", compact('posts','authorName'));
+    }
+
 
     public function show(Post $post){
 

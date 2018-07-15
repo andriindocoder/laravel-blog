@@ -14,7 +14,7 @@
       <!-- Author -->
       <p class="lead">
         by
-        <a href="#">{{ $post->author->name }}</a>
+        <a href="{{ route('author',$post->author->slug) }}">{{ $post->author->name }}</a>
       </p>
 
       <hr>
@@ -33,7 +33,28 @@
       <p class="lead">{!! $post->body_html !!}</p>
 
       <hr>
-
+      
+      <article class="post-author padding-10">
+      <div class="media">
+        <div class="media-center">
+          <a href="#">
+            <img src="/img/author.jpg" alt="Author 1" class="media-object">
+          </a>
+        </div>
+        <div class="media-body" style="padding-left: 10px;">
+          <h4 class="media-heading"><a href="{{ route('author', $post->author->slug) }}">{{ $post->author->name }}</a></h4>
+          <div class="post-author-count">
+            <a href="{{ $post->author->slug }}">
+              <i class="fa fa-clone"></i>
+              <?php $postCount = $post->author->posts->count();?>
+              {{ $postCount }} {{ str_plural('post', $postCount) }}
+            </a>
+          </div>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam quas incidunt eligendi. Repellendus.</p>
+        </div>
+      </div>
+      </article>
+      <br>
       
 
     </div>
