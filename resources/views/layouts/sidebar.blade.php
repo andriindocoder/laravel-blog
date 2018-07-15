@@ -77,7 +77,7 @@
         <div>
           <ul class="list-group list-group-flush">
             @foreach($popularPosts as $popularPost)
-            <li class="list-group-item"><a href="{{ route('blog.show', $post->slug)}}">{{ substr($popularPost->title, 0, 30) }} ...<span class="badge badge-pill badge-secondary float-right">{{ $popularPost->view_count }} {{ str_plural('hit', $popularPost->view_count)}}</span></a></li>
+            <li class="list-group-item"><img src="{{ $post->image_thumb_url }}" width=35% alt=""><a href="{{ route('blog.show', $post->slug)}}">&nbsp;{{ substr($popularPost->title, 0, 20) }} ...<span class="badge badge-pill badge-secondary float-right">{{ $popularPost->view_count }} {{ str_plural('hit', $popularPost->view_count)}}</span></a></li>
             @endforeach
           </ul>
         </div>
