@@ -69,4 +69,13 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
     }
+
+    public function showRegistrationForm(){
+      abort(404);
+    }
+
+    public function register(Request $request){
+        abort(404);
+    }
+
 }
