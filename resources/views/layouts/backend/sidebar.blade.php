@@ -130,27 +130,21 @@
             <a href="#" class="nav-link">
               <i class="nav-icon fa fa-edit"></i>
               <p>
-                Forms
+                Blog
                 <i class="fa fa-angle-left right"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/forms/general.html" class="nav-link">
+                <a href="{{ route('blog.index') }}" class="nav-link">
                   <i class="fa fa-circle-o nav-icon"></i>
-                  <p>General Elements</p>
+                  <p>All Posts</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/forms/advanced.html" class="nav-link">
+                <a href="{{ route('blog.create') }}" class="nav-link">
                   <i class="fa fa-circle-o nav-icon"></i>
-                  <p>Advanced Elements</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/forms/editors.html" class="nav-link">
-                  <i class="fa fa-circle-o nav-icon"></i>
-                  <p>Editors</p>
+                  <p>Add New</p>
                 </a>
               </li>
             </ul>
