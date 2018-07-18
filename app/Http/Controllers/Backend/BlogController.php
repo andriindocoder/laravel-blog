@@ -38,7 +38,12 @@ class BlogController extends BackendController
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'title'         => 'required',
+            'slug'          => 'required|unique:posts',
+            'body'          => 'required',
+            'published_at'  => 'date_format:Y-m-d H:i:s',
+        ]);
     }
 
     /**
