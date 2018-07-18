@@ -57,7 +57,7 @@
 				    <th>Title</th>
 				    <th width="20%">Author</th>
 				    <th width="20%">Category</th>
-				    <th width="15%">Date</th>
+				    <th width="20%">Date</th>
 				  </tr>
 				  @foreach($posts as $post)
 					  <tr>
@@ -68,21 +68,21 @@
 					  	  <td>{{ $post->title }}</td>
 					      <td>{{ $post->author->name }}</td>
 					      <td>{{ $post->category->title }}</td>
-					      <td>{{ $post->date }}</td>
+					      <td>
+					      	<abbr title="{{ $post->dateFormatted(true) }}"> {{ $post->dateFormatted() }}</abbr> | 
+					      	{!! $post->publicationLabel() !!}
+					      </td>
 					  	</tr>
 				  @endforeach
 				</table>
 			</div>
 				<div class="card-footer clearfix">
 					<div class="pull-left">
-						<ul class="pagination no-margin">
-							<li class="page-item active" aria-current="page"><span class="page-link">1</span></li>
-							<li class="page-item"><a class="page-link" href="http://ticketing.test/tiket?page=2">2</a></li>
-							<li class="page-item"><a class="page-link" href="http://ticketing.test/tiket?page=3">3</a></li>
-						</ul>
+						{{ $posts->render() }}
 					</div>
 					<div class="pull-right">
-						<small style="padding-right: 25px;">4 items</small>
+						<?php $postCount = $posts->count();?>
+						<small style="padding-right: 25px;">{{ $postCount }} {{ str_plural('Item', $postCount)}}</small>
 					</div>
 				</div>		                    	                	              
 
