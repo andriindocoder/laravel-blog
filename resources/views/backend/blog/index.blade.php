@@ -13,7 +13,8 @@
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Blog</a></li>
+              <li class="breadcrumb-item"><a href="{{ url('/home') }}"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+              <li class="breadcrumb-item"><a href="{{ url('/blog.index') }}">Blog</a></li>
               <li class="breadcrumb-item active">All Posts</li>
             </ol>
           </div><!-- /.col -->
@@ -43,14 +44,28 @@
 
 	              <!-- /.card-header -->
 	              <div class="card-body p-1">
-	              	<div class="row">
-	              		<div class="col-md-12" style="padding-left: 10px; padding-right: 30px; padding-top: 10px; padding-bottom: 10px; ">
-			                			                	              			<div class="float-right" style="color: blue;">
+  	              	<div class="row">
+  	              		<div class="col-md-6" style="padding-left: 10px; padding-right: 30px; padding-top: 10px; padding-bottom: 10px; ">
+  	              			<a href="{{ route('blog.create') }}" class="btn btn-info float-left">
+  	              			  <span>
+  	              			    <i class="fa fa-plus-circle"></i>
+  	              			    <span>
+  	              			      Add Post
+  	              			    </span>
+  	              			  </span>
+  	              			</a>
+  	              		</div>
+	              		<div class="col-md-6" style="padding-left: 10px; padding-right: 30px; padding-top: 10px; padding-bottom: 10px; ">
+	              			<div class="float-right" style="color: blue;">
 	              					              					              				    	              				      	              				      	              				    	              					              				    	              					              				<a class="" href="?status=active">Active(12) </a>
 	              			</div>
 	              		</div>
-	              	</div>
-
+  	              	</div>
+	            @if(!$posts->count())
+				<div class="alert alert-danger">
+					<strong>No Record Found</strong>
+				</div>
+				@else
               <table class="table table-striped">
 				  <tr>
 				    <th width="10%">Action </th>
@@ -75,14 +90,15 @@
 					  	</tr>
 				  @endforeach
 				</table>
+				@endif
 			</div>
 				<div class="card-footer clearfix">
-					<div class="pull-left">
+					<div class="pull-left" id="pagination">
 						{{ $posts->render() }}
 					</div>
 					<div class="pull-right">
 						<?php $postCount = $posts->count();?>
-						<small style="padding-right: 25px;">{{ $postCount }} {{ str_plural('Item', $postCount)}}</small>
+						<small style="padding-right: 25px;">{{ $postCount }} out of {{ $allPostCount }} {{ str_plural('Items', $allPostCount) }}</small>
 					</div>
 				</div>		                    	                	              
 
@@ -97,4 +113,10 @@
 <!-- /.content -->
 </div>
 	  <!-- /.content-wrapper -->
+@endsection
+
+@section('script')
+	<script type="text/javascript">
+		$('#pagination').addClass('no-margin pagination-sm');
+	</script>
 @endsection

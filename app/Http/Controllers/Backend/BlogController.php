@@ -16,8 +16,9 @@ class BlogController extends BackendController
     public function index()
     {
         $posts = Post::with('category','author')->latest()->paginate($this->limit);
+        $allPostCount = Post::count();
 
-        return view("backend.blog.index", compact('posts'));
+        return view("backend.blog.index", compact('posts','allPostCount'));
     }
 
     /**
@@ -44,6 +45,8 @@ class BlogController extends BackendController
             'body'          => 'required',
             'published_at'  => 'date_format:Y-m-d H:i:s',
         ]);
+
+        dd("success");
     }
 
     /**
