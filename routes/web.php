@@ -16,6 +16,7 @@ Route::get('/', [
 	'as' => 'blog',
 ]);
 
+Route::resource('/backend/blog', 'Backend\BlogController');
 Route::get('/blog/{post}', [
 	'uses' => 'BlogController@show',
 	'as' => 'blog.show',
@@ -35,4 +36,3 @@ Auth::routes();
 
 Route::get('/home', 'Backend\HomeController@index')->name('home');
 
-Route::resource('/backend/blog', 'Backend\BlogController');

@@ -12,7 +12,7 @@ class Post extends Model
 
 	protected $dates = ['published_at'];
 
-    protected $fillable = ['category_id', 'view_count'];
+    protected $fillable = ['title','slug','excerpt','body','published_at','category_id'];
 
 	public function author(){
 		return $this->belongsTo(User::class);
@@ -54,6 +54,10 @@ class Post extends Model
 
     public function getDateAttribute($value){
     	return is_null($this->published_at) ? '' : $this->published_at->diffForHumans();
+    }
+
+    public function setPublishedAtAttribute($value){
+        $this->attributes['published_at'] = $value ? : NULL;
     }
 
     public function dateFormatted($showTimes = false){

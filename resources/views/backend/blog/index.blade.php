@@ -61,11 +61,19 @@
 	              			</div>
 	              		</div>
   	              	</div>
+				@if(session('message'))
+					<div class="alert alert-success">
+						{{ session('message') }}
+					</div>
+				@endif
+
 	            @if(!$posts->count())
 				<div class="alert alert-danger">
 					<strong>No Record Found</strong>
 				</div>
 				@else
+
+
               <table class="table table-striped">
 				  <tr>
 				    <th width="10%">Action </th>

@@ -49,34 +49,62 @@
 						'route' => 'blog.store',
 					])!!}
 
-				<div class="form-group">
+				<div class="form-group {{ $errors->has('title') ? 'has-error' : ''}}">
 					{!! Form::label('title') !!}
 					{!! Form::text('title', null, ['class'=>'form-control']) !!}
+					@if($errors->has('title'))
+						<span class="badge badge-danger">{{ $errors->first('title') }}</span>
+					@endif
 				</div>
 
-				<div class="form-group">
+				<div class="form-group {{ $errors->has('slug') ? 'has-error' : ''}}">
 					{!! Form::label('slug') !!}
 					{!! Form::text('slug', null, ['class'=>'form-control']) !!}
+					@if($errors->has('slug'))
+						<span class="badge badge-danger">{{ $errors->first('slug') }}</span>
+					@endif
 				</div>
 
-				<div class="form-group">
+				<div class="form-group {{ $errors->has('excerpt') ? 'has-error' : ''}}">
 					{!! Form::label('excerpt') !!}
 					{!! Form::textarea('excerpt', null, ['class'=>'form-control']) !!}
+					@if($errors->has('excerpt'))
+						<span class="badge badge-danger">{{ $errors->first('excerpt') }}</span>
+					@endif
 				</div>
 
-				<div class="form-group">
+				<div class="form-group {{ $errors->has('body') ? 'has-error' : ''}}">
 					{!! Form::label('body') !!}
 					{!! Form::textarea('body', null, ['class'=>'form-control']) !!}
+					@if($errors->has('body'))
+						<span class="badge badge-danger">{{ $errors->first('body') }}</span>
+					@endif
 				</div>
 
-				<div class="form-group">
+				<div class="form-group {{ $errors->has('published_at') ? 'has-error' : ''}}">
 					{!! Form::label('published_at', 'Publish Date') !!}
-					{!! Form::text('published_at', null, ['class'=>'form-control']) !!}
+					{!! Form::text('published_at', null, ['class'=>'form-control','placeholder' => 'Date Format: Y-m-d H:i:s']) !!}
+					@if($errors->has('published_at'))
+						<span class="badge badge-danger">{{ $errors->first('published_at') }}</span>
+					@endif
 				</div>
 
-				<div class="form-group">
+				<div class="form-group {{ $errors->has('category_id') ? 'has-error' : ''}}">
 					{!! Form::label('category_id', 'Category') !!}
 					{!! Form::select('category_id', App\Category::pluck('title','id'), null, ['class'=>'form-control', 'placeholder' => 'Select Category']) !!}
+					@if($errors->has('category_id'))
+						<span class="badge badge-danger">{{ $errors->first('category_id') }}</span>
+					@endif
+				</div>
+
+				<div class="form-group {{ $errors->has('image') ? 'has-error' : ''}}">
+					{!! Form::label('image', 'Featured Image') !!}
+					<br>
+					{!! Form::file('image') !!}
+
+					@if($errors->has('image'))
+						<span class="badge badge-danger">{{ $errors->first('image') }}</span>
+					@endif
 				</div>
 
 				<hr>

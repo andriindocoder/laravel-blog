@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use Illuminate\Http\Request;
 use App\Post;
+use App\Http\Requests;
 
 class BlogController extends BackendController
 {
@@ -37,16 +38,24 @@ class BlogController extends BackendController
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Requests\PostRequest $request)
     {
-        $this->validate($request, [
-            'title'         => 'required',
-            'slug'          => 'required|unique:posts',
-            'body'          => 'required',
-            'published_at'  => 'date_format:Y-m-d H:i:s',
-        ]);
+        $data = $this->handleRequest($request);
 
-        dd("success");
+        $request->user()->posts()->create($data);
+
+        return redirect(route('blog.index'))->with('message', 'Post has been added');
+    }
+
+    private function handleRequest($request){
+        $data = $request->all();
+
+        if($request->hasFile('image')){
+            $image = $request->file('image');
+            $fileName = $image->getClientOriginalName();
+            $destination = $this->uploadPath;
+            $image->move($destination, $fileName);
+        }
     }
 
     /**
